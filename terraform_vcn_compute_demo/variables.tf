@@ -30,7 +30,7 @@ variable "instance_ocpus" {
 }
 
 variable "instance_shape_config_memory_in_gbs" {
-  default = 1
+  default = 2
 }
 
 variable "instance_os" {
