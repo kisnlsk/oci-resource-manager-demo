@@ -7,7 +7,7 @@
 resource "oci_core_instance" "compute_instance" {
   availability_domain = var.availablity_domain_name == "" ? data.oci_identity_availability_domains.ADs.availability_domains[0]["name"] : var.availablity_domain_name
   compartment_id      = var.compartment_ocid
-  display_name        = "test-instance-2"
+  display_name        = "test-instance"
   shape               = var.instance_shape
   fault_domain        = "FAULT-DOMAIN-1"
 
