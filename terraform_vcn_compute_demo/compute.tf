@@ -3,8 +3,6 @@
 
 # This Terraform script provisions a compute instance
 
-variable oci_core_instance--source_details-source_id--export_instance-4 { default = "ocid1.image.oc1.ap-tokyo-1.aaaaaaaay72qyswcworlh5phdr67q7aezs2ecmhbrs2yqs7x6iudtxw22qta" }
-variable oci_core_instance--source_details-source_id--export_instance-3 { default = "ocid1.image.oc1.ap-tokyo-1.aaaaaaaay72qyswcworlh5phdr67q7aezs2ecmhbrs2yqs7x6iudtxw22qta" }
 variable oci_core_instance--source_details-source_id--export_test-instance { default = "ocid1.image.oc1.ap-tokyo-1.aaaaaaaay72qyswcworlh5phdr67q7aezs2ecmhbrs2yqs7x6iudtxw22qta" }
 
 resource "oci_core_instance" "compute_instance" {
