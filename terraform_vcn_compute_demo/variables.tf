@@ -33,4 +33,4 @@ variable "instance_shape_config_memory_in_gbs" {
   default = 1
 }
 
-variable oci_core_instance--source_details-source_id--export_instance-2 { default = "ocid1.image.oc1.ap-tokyo-1.aaaaaaaay72qyswcworlh5phdr67q7aezs2ecmhbrs2yqs7x6iudtxw22qta" }
+variable oci_core_instance--source_details-source_id--export_test-instance-2 { default = "ocid1.image.oc1.ap-tokyo-1.aaaaaaaay72qyswcworlh5phdr67q7aezs2ecmhbrs2yqs7x6iudtxw22qta" }
