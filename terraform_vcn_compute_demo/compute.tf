@@ -3,8 +3,6 @@
 
 # This Terraform script provisions a compute instance
 
-variable oci_core_instance--source_details-source_id--export_test-instance { default = "ocid1.image.oc1.ap-tokyo-1.aaaaaaaay72qyswcworlh5phdr67q7aezs2ecmhbrs2yqs7x6iudtxw22qta" }
-
 resource "oci_core_instance" "compute_instance" {
   availability_domain = var.availablity_domain_name == "" ? data.oci_identity_availability_domains.ADs.availability_domains[0]["name"] : var.availablity_domain_name
   compartment_id      = var.compartment_ocid
