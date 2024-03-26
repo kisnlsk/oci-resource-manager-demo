@@ -27,7 +27,7 @@ resource "oci_core_instance" "compute_instance" {
   }
 
   source_details {
-    source_id   = local.compute_image_id
+    source_id   = local.platform_image_id
     source_type = "image"
     boot_volume_size_in_gbs = "50"
   }
