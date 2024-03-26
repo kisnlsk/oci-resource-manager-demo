@@ -28,8 +28,8 @@ resource "oci_core_instance" "compute_instance" {
   }
 
   source_details {
-    source_type             = "image"
-    source_id               = oci_core_image.export_opslin01.id
+    source_id   = oci_core_image.export_opslin01.id
+    source_type = "image"
     boot_volume_size_in_gbs = "50"
   }
 
