@@ -33,6 +33,12 @@ variable "instance_shape_config_memory_in_gbs" {
   default = 1
 }
 
-variable oci_core_instance--source_details-source_id--export_test-instance { default = "ocid1.image.oc1.ap-tokyo-1.aaaaaaaay72qyswcworlh5phdr67q7aezs2ecmhbrs2yqs7x6iudtxw22qta" }
-variable availability_domain--nNMJ-AP-TOKYO-1-AD-1 { default = "nNMJ:AP-TOKYO-1-AD-1" }
-variable fault_domain--FAULT-DOMAIN-3 { default = "FAULT-DOMAIN-3" }
+variable "instance_os" {
+  description = "Operating system for compute instances"
+  default     = "Oracle Linux"
+}
+
+variable "linux_os_version" {
+  description = "Operating system version for all Linux instances"
+  default     = "7.9"
+}
