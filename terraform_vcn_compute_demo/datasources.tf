@@ -1,80 +1,40 @@
 ## Copyright (c) 2021, Oracle and/or its affiliates.
 ## All rights reserved. The Universal Permissive License (UPL), Version 1.0 as shown at http://oss.oracle.com/licenses/upl
 
-# Create VCN
+# Get list of availability domains
 
-resource "oci_core_virtual_network" "vcn" {
-  cidr_block     = var.VCN-CIDR
-  compartment_id = var.compartment_ocid
-  display_name   = "test-vcn"
+data "oci_identity_availability_domains" "ADs" {
+  compartment_id = var.tenancy_ocid
 }
 
-# Create internet gateway to allow public internet traffic
+data "oci_core_images" "InstanceImageOCID" {
+  compartment_id           = var.compartment_ocid
+  operating_system         = var.instance_os
+  operating_system_version = var.linux_os_version
 
-resource "oci_core_internet_gateway" "ig" {
-  compartment_id = var.compartment_ocid
-  display_name   = "internet-gateway"
-  vcn_id         = oci_core_virtual_network.vcn.id
+  shape      = var.instance_shape
+  sort_by    = "TIMECREATED"
+  sort_order = "DESC"
 }
 
-# Create route table to connect vcn to internet gateway
+# Gets home and current regions
 
-resource "oci_core_route_table" "rt" {
-  compartment_id = var.compartment_ocid
-  vcn_id         = oci_core_virtual_network.vcn.id
-  display_name   = "route-table"
-  route_rules {
-    destination       = "0.0.0.0/0"
-    network_entity_id = oci_core_internet_gateway.ig.id
-  }
+data "oci_identity_tenancy" "tenant_details" {
+  tenancy_id = var.tenancy_ocid
+  provider   = oci.current_region
 }
 
-# Create security list to allow internet access from compute and ssh access
-
-resource "oci_core_security_list" "sl" {
-  compartment_id = var.compartment_ocid
-  display_name   = "security-list"
-  vcn_id         = oci_core_virtual_network.vcn.id
-
-  egress_security_rules {
-    destination = "0.0.0.0/0"
-    protocol    = "6"
+data "oci_identity_regions" "home_region" {
+  filter {
+    name   = "key"
+    values = [data.oci_identity_tenancy.tenant_details.home_region_key]
   }
 
-  ingress_security_rules {
-
-    protocol = "6"
-    source   = "0.0.0.0/0"
-
-    tcp_options {
-      max = 22
-      min = 22
-    }
-  }
-
-  ingress_security_rules {
-    protocol = "6"
-    source   = "0.0.0.0/0"
-
-    tcp_options {
-      max = 80
-      min = 80
-    }
-  }
+  provider = oci.current_region
 }
 
-# Create regional subnets in vcn
-
-resource "oci_core_subnet" "subnet" {
-  cidr_block        = var.Subnet-CIDR
-  display_name      = "test-subnet"
-  compartment_id    = var.compartment_ocid
-  vcn_id            = oci_core_virtual_network.vcn.id
-  dhcp_options_id   = oci_core_virtual_network.vcn.default_dhcp_options_id
-  route_table_id    = oci_core_route_table.rt.id
-  security_list_ids = [oci_core_security_list.sl.id]
-
-  provisioner "local-exec" {
-    command = "sleep 5"
-  }
+# Randoms
+resource "random_string" "deploy_id" {
+  length  = 4
+  special = false
 }
