@@ -3,6 +3,7 @@
 
 # This Terraform script provisions a compute instance
 
+
 resource "oci_core_instance" "compute_instance" {
   availability_domain = var.availablity_domain_name == "" ? data.oci_identity_availability_domains.ADs.availability_domains[0]["name"] : var.availablity_domain_name
   compartment_id      = var.compartment_ocid
@@ -27,8 +28,8 @@ resource "oci_core_instance" "compute_instance" {
   }
 
   source_details {
-    source_id   = local.platform_image_id
-    source_type = "image"
+    source_type             = "image"
+    source_id               = lookup(data.oci_core_images.InstanceImageOCID.images[0], "id")
     boot_volume_size_in_gbs = "50"
   }
 
