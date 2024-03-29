@@ -1,7 +1,20 @@
 ## Copyright (c) 2021, Oracle and/or its affiliates.
 ## All rights reserved. The Universal Permissive License (UPL), Version 1.0 as shown at http://oss.oracle.com/licenses/upl
 
-output "generated_ssh_private_key" {
-  value     = tls_private_key.public_private_key_pair.private_key_pem
-  sensitive = true
+
+provider "oci" {
+  tenancy_ocid = var.tenancy_ocid
+  region       = var.region
+}
+
+provider "oci" {
+  alias        = "home_region"
+  tenancy_ocid = var.tenancy_ocid
+  region       = lookup(data.oci_identity_regions.home_region.regions[0], "name")
+}
+
+provider "oci" {
+  alias        = "current_region"
+  tenancy_ocid = var.tenancy_ocid
+  region       = var.region
 }
