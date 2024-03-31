@@ -29,7 +29,7 @@ resource "oci_core_instance" "compute_instance" {
 
   source_details {
     source_type             = "image"
-    source_id               = "ocid1.image.oc1.ap-tokyo-1.aaaaaaaay2gzp44elkbjtop3zuaf4ko3edxvfhzzz3dlozxvk5kb4cxhdzrq"
+    source_id               = "ocid1.image.oc1.ap-tokyo-1.aaaaaaaanmepv72ig47mu7zgamy6q4fus5kbqdevexr53jjyxkklyatm355a"
     boot_volume_size_in_gbs = "50"
   }
 
