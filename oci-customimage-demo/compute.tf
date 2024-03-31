@@ -29,7 +29,7 @@ resource "oci_core_instance" "compute_instance" {
 
   source_details {
     source_type             = "image"
-    source_id               = lookup(data.oci_core_images.InstanceImageOCID.images[0], "id")
+    source_id               = "ocid1.image.oc1.ap-tokyo-1.aaaaaaaay2gzp44elkbjtop3zuaf4ko3edxvfhzzz3dlozxvk5kb4cxhdzrq"
     boot_volume_size_in_gbs = "50"
   }
 
