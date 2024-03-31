@@ -35,10 +35,10 @@ variable "instance_shape_config_memory_in_gbs" {
 
 variable "instance_os" {
   description = "Operating system for compute instances"
-  default     = "Windows server"
+  default     = "CentOS"
 }
 
 variable "windows_os_version" {
   description = "Operating system version for all Linux instances"
-  default     = "Windows-Server-2019-Standard-Edition"
+  default     = "7.9"
 }
