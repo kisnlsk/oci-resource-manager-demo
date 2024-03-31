@@ -26,19 +26,19 @@ variable "instance_shape" {
 }
 
 variable "instance_ocpus" {
-  default = 1
+  default = 2
 }
 
 variable "instance_shape_config_memory_in_gbs" {
-  default = 1
+  default = 8
 }
 
 variable "instance_os" {
   description = "Operating system for compute instances"
-  default     = "Oracle Linux"
+  default     = "Windows server"
 }
 
-variable "linux_os_version" {
+variable "windows_os_version" {
   description = "Operating system version for all Linux instances"
-  default     = "7.9"
+  default     = "Windows-Server-2019-Standard-Edition"
 }
