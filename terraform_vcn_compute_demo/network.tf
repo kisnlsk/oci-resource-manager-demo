@@ -6,7 +6,7 @@
 resource "oci_core_virtual_network" "vcn" {
   cidr_block     = var.VCN-CIDR
   compartment_id = var.compartment_ocid
-  display_name   = "test-vcn"
+  display_name   = "test-vcn01"
 }
 
 # Create internet gateway to allow public internet traffic
