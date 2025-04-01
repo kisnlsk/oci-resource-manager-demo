@@ -17,7 +17,7 @@ resource "oci_core_instance" "compute_instance" {
   }
 
   metadata = {
-    ssh_authorized_keys = var.ssh_public_key == "" ? tls_private_key.public_private_key_pair.public_key_openssh : var.ssh_public_key
+    "ssh_authorized_keys" = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3jJ6cWKevDjX/qyA2phYRVDlyKO+s0An7aq8UsCC3Xd/XYMkbBFNupQ/JOpvS4VAh25f8joRz3T8mCM33ObmMev+J7IX9Eh2Hl8m2/46lDfoVwKb7HNjcfqhVY6MrzJjueJXKGm69UbCQrsX2gkI/R1AynZ+r1Bgn53+aoin6cQtNzHy31km459EyCittOQhJcNWpF4oP1jlN7+6h4M26BEB+cKctvT1h0beThcG1/HHFTn1nrCAxKE2f3eJzIKXrSoV1x2DfIZqb9jTXb/C0WUPjcW2x/BQQ9wjQm/0BV9mpzsy7rt9HiJrjkaIPDglkchHGuq6X7/M8J3uBos4h ssh-key-2025-03-25"
   }
 
   create_vnic_details {
