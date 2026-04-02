@@ -26,11 +26,11 @@ variable "instance_shape" {
 }
 
 variable "instance_ocpus" {
-  default = 1
+  default = 3
 }
 
 variable "instance_shape_config_memory_in_gbs" {
-  default = 8
+  default = 10
 }
 
 variable "instance_os" {
